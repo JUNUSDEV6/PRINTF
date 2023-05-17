@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:55:10 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/04/27 14:01:26 by yohanafi         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:47:15 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ int ft_printf(const char *format, ...)
 		format++;	
 	}
 	va_end(arg_lst);
-	return(rlt)
+	return(rlt);
 }
 
-int main()
-{
-	printf("%d", ft_printf("%c", "c"));
-}
