@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 11:55:10 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/05/22 11:04:37 by yohanafi         ###   ########.fr       */
+/*   Created: 2023/05/22 11:28:59 by yohanafi          #+#    #+#             */
+/*   Updated: 2023/05/22 11:29:50 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_printf.h"
 
-int	ft_printf(const char *format, ...)
+size_t	ft_putchar(char c)
 {
-	va_list	arg_lst;
-	size_t	rlt;
+	write(1, &c, 1);
+}
 
-	va_start(arg_lst, format);
-	rlt = 0;
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			rlt += ft_check_form(*(format + 1), arg_lst);
-			format++;
-		}
-		else
-			rlt += ft_putchar(*format);
-		format++;
-	}
-	va_end(arg_lst);
-	return (rlt);
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
+}
+
+size_t	ft_putstr(const char *str)
+{
+	int	i;
+
+	if (!str)
+		return (0);
+	i = ft_strlen(str);
+	write(1, &str, i);
 }
