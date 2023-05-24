@@ -6,11 +6,11 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:55:10 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/05/22 11:04:37 by yohanafi         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:07:26 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {

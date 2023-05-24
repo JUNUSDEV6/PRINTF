@@ -12,19 +12,19 @@ RM      = rm -f
 
 CFLAGS  =   -Wall -Werror -Wextra
 
-.c.o:
-    $(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+$(OBJS): %.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-    $(LIBC) $(NAME) $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 clean:
-    $(RM) $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-    $(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

@@ -6,11 +6,11 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:11:11 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/05/22 11:57:54 by yohanafi         ###   ########.fr       */
+/*   Updated: 2023/05/24 11:36:32 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_printf.h"
+#include "ft_printf.h"
 
 size_t	ft_check_form(char c, va_list arg_lst)
 {
@@ -23,8 +23,10 @@ size_t	ft_check_form(char c, va_list arg_lst)
 		rlt += ft_putstr(va_arg(arg_lst, char *));
 	if (c == 'd' || c == 'i')
 		rlt += ft_putnbr(va_arg(arg_lst, int));
+	if (c == '%')
+		rlt += ft_putchar('%');
 	if (c == 'p')
-		rlt += ft_putstr('0x')
+		rlt += ft_putstr("0x")
 			+ft_putnbr_base(va_arg(arg_lst, unsigned long), "0123456789abcdef");
 	if (c == 'u')
 		rlt += ft_putnbr_base(va_arg(arg_lst, unsigned), "0123456789");
@@ -32,6 +34,7 @@ size_t	ft_check_form(char c, va_list arg_lst)
 		rlt += ft_putnbr_base(va_arg(arg_lst, unsigned), "0123456789abcdef");
 	if (c == 'X')
 		rlt += ft_putnbr_base(va_arg(arg_lst, unsigned), "0123456789ABCDEF");
+	return (rlt);
 }
 
 size_t	ft_putnbr(long int nbr)
@@ -59,8 +62,6 @@ size_t	ft_putnbr_base(unsigned long int nbr, const char *base)
 	size_t		len;
 	size_t		base_len;
 
-	if (!nbr || ft_strlen(base) < 2)
-		return (0);
 	base_len = ft_strlen(base);
 	len = 0;
 	if (nbr < base_len)
