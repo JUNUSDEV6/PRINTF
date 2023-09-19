@@ -6,7 +6,7 @@
 /*   By: yohanafi <yohanafi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:55:10 by yohanafi          #+#    #+#             */
-/*   Updated: 2023/05/24 12:07:26 by yohanafi         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:11:00 by yohanafi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			rlt += ft_check_form(*(format + 1), arg_lst);
+			if (*(format + 1) == 32 && *(format + 2) == '%')
+				rlt += ft_check_form('%', arg_lst);
+			else
+				rlt += ft_check_form(*(format + 1), arg_lst);
 			format++;
 		}
 		else

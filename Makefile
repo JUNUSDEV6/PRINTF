@@ -12,10 +12,10 @@ RM      = rm -f
 
 CFLAGS  =   -Wall -Werror -Wextra
 
+all: $(NAME)
+
 $(OBJS): %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
-all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
